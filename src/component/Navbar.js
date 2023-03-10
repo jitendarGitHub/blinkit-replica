@@ -87,14 +87,13 @@ export default function Navbar() {
                     <span className="text-gray-700 font-semibold ">
                         Total Quantity  :  {cart.length}
                     </span>
-
-                    <div className="cart-Wrapper mt-5  p-2  " >
+                    <div className="cart-Wrapper mt-5  p-2  ">
                         {cart.map((item) =>
                             <div className=" d-flex col-sm-8 cart-item mb-4 " key={item.id}>
                                 <div className="img bg-success border-2 text-center mb-3 mx-2" style={{ width: "20%" }}>
                                     <img src={item.image} alt="" width={'100%'} />
                                 </div>
-                                <div className="price mx-3">
+                                <div className="price mx-3" >
                                     <p className="" style={{ fontSize: "13px" }}>{item.title}</p>
                                     <h5 className="mt-3 d-flex fw-bold"><b className="mx-1">₹ </b>{item.price}
                                         <AddBtn />
