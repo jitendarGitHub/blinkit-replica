@@ -99,7 +99,6 @@ export default function Navbar() {
                                     <h5 className="mt-3 d-flex fw-bold"><b className="mx-1">₹ </b>{item.price}
                                         <AddBtn />
                                     </h5>
-
                                 </div>
                             </div>
                         )}
