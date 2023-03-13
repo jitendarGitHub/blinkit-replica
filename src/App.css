@@ -76,6 +76,16 @@
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 45px;  text-decoration: underline;
 }
+.cart-Wrapper{ 
+  border: thin #f7f3f3 solid; 
+  -ms-overflow-style: none; 
+  scrollbar-width: 1px; 
+  overflow-y: scroll;
+  height: 500px; 
+}
+.cart-Wrapper::-webkit-scrollbar{
+  display: none;
+}
 .btn-right {
   padding-left: 350px; 
 }
@@ -210,8 +220,75 @@ body{
 } 
 .colmnss:hover{
   transform: scale(1.1) rotate(15deg);   
-  transition:   0.5s; 
+  transition:   0.5s;
+}
+.colmnss{
+  margin-top: 12px;
+  margin-left: 5px;
 }
 .cnd{
   overflow: scroll;
+} 
+.locations{ 
+  width: 40px;
+  height: 40px;
+  color:rgb(205, 189, 189);  
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-top: 3px;
+  font-size: 14px;
+  border: 1px  solid rgb(205, 189, 189);
+  padding: 2px;
 }
+.offer{
+  margin-left: -100px;
+} 
+.out-of-stock{
+  width:50px;
+  height: 50px;
+  margin-left: -50px;
+  margin-top: 30px;
+  border: 1px solid white; 
+  border-radius: 50%;
+} 
+.main{
+  text-align: center;
+}
+input[type="search"] { 
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit; 
+}
+
+input[type="search"]::placeholder {
+  color: #bbb; 
+} 
+ button[type="submit"]:focus,
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
+form.nosubmit {
+  border: none;
+  padding: 0;
+  background-color: rgb(243, 243, 238);
+  border-radius: 20px;
+}
+
+input.nosubmit { 
+  display: block;
+  padding: 9px 4px 9px 40px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+.header-color{
+  background-color: #cbcdd2;
+}
+ 
+ 

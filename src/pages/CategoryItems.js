@@ -5,18 +5,19 @@ import Product from "../component/Product";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Items from "../mockup/MockUpcategoryItem";
 import { useNavigate } from "react-router";
+import Rolling from "../mockup/MockUpRolling";
 export default function CategoryItem() {
     const navigate = useNavigate()
     return (
         <>
-            <div className="container-fluid row">
+            <div className="container-fluid row ">
                 <div className="col-sm-3 category2-scroll" >
                     {Items.map((item) => (
                         <ListGroup>
                             <ListGroup.Item>
-                                <div className="  p-1 text-center d-flex " onClick={() => navigate("/breakfast")}>
+                                <div className="  p-1 text-center d-flex " >
                                     <img className="mx-1 mt-2 " src={item.image} alt="" width={"15%"} />
-                                    <p className="mx-3 mt-2">{item.title}</p>
+                                    <p className="mx-3 mt-2 truncate w-40 text-start"  >{item.title}</p>
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
@@ -24,28 +25,29 @@ export default function CategoryItem() {
                 </div>
                 <div className="col-9 category-scroll">
                     <div className="d-flex" style={{ justifyContent: "space-between" }}>
-                        <h4 className="fw-bold mt-3">Buy Fresh Vegitable Online</h4>
+                        <h4 className="fw-bold mt-3 mx-4">Buy Fresh Fruits & A  Online</h4>
                         <Dropdown style={{ fontSize: "11px" }}>
                             Sort By :&nbsp;&nbsp;&nbsp;
                             <Dropdown.Toggle id="dropdown-basic" className="text-dark">
                                 Relavance
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{ fontSize: "12px" }}>
-                                <Dropdown.Item href="#/action-1">Price(Low to High)</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Price (High to low)</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Discount(high to Low )</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" className="mx-1   border-2" name="check" /> Price(Low to High)</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" /> Price (High to low)</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Discount(high to Low )</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Relavance</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Name(A to Z</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                     <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3 space-x-5 space-y-10 lg:grid-cols-4 max-w-9xl mx-auto p-2 "  >
-                        {Products.map((item) => {
+                        {Rolling.map((item) => {
                             return (
                                 <>
                                     <Product key={item.id} item={item} />
                                 </>
                             )
                         })}
-
                     </div>
                 </div>
             </div>

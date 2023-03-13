@@ -6,6 +6,7 @@ export const Products = [
         title: "Saras Toned Fresh Milk",
         weight: "500g",
         price: 25,
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
     },
     {
         count: 0,
@@ -14,6 +15,7 @@ export const Products = [
         title: "Nestle MilkMaid Sweetned...",
         weight: "1kg",
         price: 240,
+        offer: "15% off"
     },
     {
         count: 0,
@@ -22,6 +24,7 @@ export const Products = [
         title: "Amul Blend Dieced Cheez..",
         weight: "200g",
         price: 118,
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
     },
     {
         count: 0,
@@ -38,6 +41,7 @@ export const Products = [
         title: "Harvest Gold Hearty Brown Bread..",
         weight: "400g",
         price: 48,
+        offer: "20% off "
     },
     {
         count: 0,
@@ -45,7 +49,7 @@ export const Products = [
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/477832a.jpg?ts=1638510380",
         title: "Jaipur Egg Bazaar Fresh White Egg..",
         weight: "6 Pieces",
-        price: 42
+        price: 42,
     },
     {
         count: 0,
@@ -69,7 +73,8 @@ export const Products = [
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/95609a.jpg?ts=1625639870",
         title: "Hravest Gold Sandwhich White Bread",
         weight: '450g',
-        price: 37
+        price: 37,
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
     },
     {
         count: 0,
@@ -93,7 +98,8 @@ export const Products = [
         image: " https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/125240a.jpg?ts=1654778894 ",
         title: "Amul CHeez Slices..",
         weight: "750g",
-        price: 80
+        price: 80,
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
     },
     {
         count: 0,

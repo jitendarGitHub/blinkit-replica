@@ -12,7 +12,8 @@ const Rolling = [
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/477465a.jpg?ts=1669986862",
         title: "Brown Classic Slim Rolling Paper..",
         title: "1 packet",
-        price: 149
+        price: 149,
+        offer: "15% Off"
     },
     {
         id: 3,
@@ -30,7 +31,8 @@ const Rolling = [
         id: 5,
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/496994a.jpg?ts=1669987323",
         title: "Brown Rolling Paper Roach with Crushing..",
-        price: 222
+        price: 222,
+        offer: "19% Off"
     },
     {
         id: 6,

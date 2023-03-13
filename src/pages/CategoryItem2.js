@@ -16,9 +16,9 @@ export default function CategoryItem2() {
                     {Items.map((item) => (
                         <ListGroup>
                             <ListGroup.Item>
-                                <div className="  p-1 text-center d-flex " onClick={() => navigate("/fruits")}>
+                                <div className="  p-1 text-center d-flex " >
                                     <img className="mx-1 mt-2 " src={item.img} alt="" width={"15%"} />
-                                    <p className="mx-3 mt-2">{item.tit}</p>
+                                    <p className="mx-3 mt-2 truncate w-40 text-start">{item.tit}</p>
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
@@ -26,7 +26,7 @@ export default function CategoryItem2() {
                 </div>
                 <div className="col-9 category-scroll">
                     <div className="d-flex" style={{ justifyContent: "space-between" }}>
-                        <h4 className="fw-bold mt-3 mx-4">Buy Fresh Vegitable Online</h4>
+                        <h4 className="fw-bold mt-3 mx-4">Buy Fresh Milk Products Online</h4>
 
                         <Dropdown style={{ fontSize: "11px" }}>
                             Sort By :&nbsp;&nbsp;&nbsp;
@@ -34,14 +34,16 @@ export default function CategoryItem2() {
                                 Relavance
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{ fontSize: "12px" }}>
-                                <Dropdown.Item href="#/action-1">Price(Low to High)</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Price (High to low)</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Discount(high to Low )</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" className="mx-1   border-2" name="check" /> Price(Low to High)</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" /> Price (High to low)</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Discount(high to Low )</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Relavance</Dropdown.Item>
+                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Name(A to Z</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                     <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3 space-x-5 space-y-10 lg:grid-cols-4 max-w-7xl mx-auto p-2 "  >
-                        {Rolling.map((item) => {
+                        {Products.map((item) => {
                             return (
                                 <>
                                     <Product key={item.id} item={item} />

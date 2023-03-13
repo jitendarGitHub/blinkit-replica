@@ -15,8 +15,8 @@ export default function CategoryNavbar() {
                         <Navbar.Toggle />
                         <Navbar.Collapse >
                             <Nav className="gap-4 mx-5  navbar-text-size category-item mt-3 "  >
-                                <li onClick={() => navigate("/fruits")}>Vegetables & fruits</li>
                                 <li onClick={() => navigate("/breakfast")}>Dairy and Breakfast </li>
+                                <li onClick={() => navigate("/fruits")}>Vegetables & fruits</li>
                                 <li onClick={() => navigate("/munchies")}>Munchies</li>
                                 <li onClick={() => navigate("/cold-drink")}>Cod Drinks and Jiuces</li>
                                 <li onClick={() => navigate("/food")}>Instant & frezen Food</li>
