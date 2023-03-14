@@ -13,6 +13,8 @@ import proceed from "../asset/greter.png"
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import swal from 'sweetalert';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 export default function Navbar(item) {
 
@@ -43,35 +45,132 @@ export default function Navbar(item) {
     }, [cart]);
 
 
-
-
+    const [input, setinput] = useState(true)
+    function Change() {
+        setinput(false)
+    }
 
     function loginHandle(e) {
         e.preventDefault()
     }
-
-    const [user, seruser] = useState(false)
+    const [usererr, setusererror] = useState(false)
     function Onchange(e) {
         let item = e.target.value;
         if (item.length == 10) {
-            document.getElementById("btn").style.backgroundColor = "green"
-            document.getElementById("btn").style.disabled = true
+            setusererror(true)
         }
         else {
-            document.getElementById("btn").style.backgroundColor = "red"
+            setusererror(false)
         }
-        console.log(e.target.value.length)
     }
-
     function Popup() {
         swal("Good job!", "Successful Logged In", "success")
+        navigate("/")
     }
+
+    // const [login, setlogin] = useState(false);
+    // const login1 = () => setlogin(true)
+    // const logout = () => setlogin(false)
+
+    function Login(item) {
+        const [usererr, setusererror] = useState(false)
+        const Onchange = (e) => {
+            let data = e.target.value;
+            if (data.length === 10) {
+                setusererror(true);
+            }
+            else {
+                setusererror(false)
+            }
+        }
+
+        return (
+            <>
+                <div className="text-center  fw-light ">
+                    <span className="login" style={{ fontSize: '13px' }}>Enter your phone number to<br />
+                        Login/Sign up
+                    </span>
+                    <div class="col-8 mx-5 mt-3">
+                        <div class="input-group mx-4">
+                            <span class="input-group-text">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4921/4921142.png" className="w-5 h-5 mx-1" />
+                                +91
+                            </span>
+                            <input type="number" className="form-control" id="InputNumber" onChange={Onchange} />
+                        </div>
+                    </div>
+                    {
+                        usererr ?
+                            (
+                                <Button size="lg" className="col-8 mt-3 btn bg-success lg-btn login-btn" onClick={Change} >
+                                    Next
+                                </Button>
+                            ) : <Button size="lg" className="col-8 mt-4 disabled lg-btn login-btn bg-secondary">
+                                Next
+                            </Button>
+                    }
+
+                    <p className="mt-5 " style={{ fontSize: '11px' }}>
+                        By continuing, you agree to our
+                    </p>
+                    <a href="#" style={{ fontSize: '12px', color: 'green', textDecoration: "underline" }}>
+                        Term of Service &nbsp;&nbsp; Privacy of Policy
+                    </a>
+                </div>
+            </>
+        );
+    }
+
+    function OtpPage() {
+        const navigate = useNavigate()
+        function Popup() {
+            swal("Good job!", "Successful Logged In", "success")
+            navigate("/")
+        }
+
+        return (
+            <>
+                <div className="mt-3 text-center otp-bg ">
+                    <span className="text-center">Enter 4 digit code sent to your phone  </span>
+                    <div className="otp mt-3  d-flex item-center justify-content-center gap-2">
+                        <div className=" ">
+                            <input type="text " className="border-2 fs-4 text-center" />
+                        </div>
+                        <div className=" ">
+                            <input type="text " className="border-2 fs-4 text-center" />
+                        </div>
+                        <div className=" ">
+                            <input type="text" className="border-2 fs-4 text-center" />
+                        </div>
+                        <div className=" ">
+                            <input type="text " className="border-2 fs-4 text-center" />
+                        </div>
+                    </div>
+                    <div>
+                        <Button onClick={Popup} className="bg-success form-control w-50 mt-3 ">OK</Button>
+                        <div className="text-success mt-3">
+                            <a href="#">Resend code</a>
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
+
+    }
+
+
+
 
     return (
         <>
-            <nav className="navbar bg-body-tertiary  sticky-top  " >
+            <nav className="navbar bg-body-tertiary sticky-top" >
                 <div className="container-fluid">
-                    <h3 className="fw-bolder fs-1 text-warning" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>blink<span className="text-success">it</span></h3>
+                    <span className="fw-bolder fs-1 text-warning" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+                        blink
+                        <span className="text-success">
+                            it
+                        </span>
+                    </span>
                     <div className=" delivery">
                         <h5 className=" fs-4">Delivery 10 min</h5>
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={Show}>
@@ -97,7 +196,7 @@ export default function Navbar(item) {
                         </NavLink>
                         <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
                             <img className="  colmnss w-6 h-6 " src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={handleS} />
-                            <div className="   container " >
+                            <div className="container " >
                                 <span className="text-white   w-1">{cart.length} item</span>
                                 <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>
                             </div>
@@ -106,32 +205,18 @@ export default function Navbar(item) {
                 </div>
             </nav>
 
-            {/*For Login*/}
-            <Modal show={show} onHide={handleClose} centered className="">
-                <Modal.Header closeButton>
-                    <Modal.Title><span className="phone-header">Phone Number Varification</span></Modal.Title>
-                </Modal.Header>
+            {/* for Login */}
+
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Title className="fs-4 phone-header mt-4 mb-4">
+                    Phone Number Varification
+                </Modal.Title>
                 <Modal.Body>
-                    <Form onSubmit={loginHandle}>
-                        <div className="text-center  fw-light ">
-                            <span className="login" style={{ fontSize: '13px' }}>Enter your phone number to<br />
-                                Login/Sign up</span>
-                            <div class="col-8 mx-5 mt-3">
-                                <div class="input-group mx-4">
-                                    <span class="input-group-text"><img src="https://cdn-icons-png.flaticon.com/512/4921/4921142.png" className="w-5 h-5 mx-1" />+91</span>
-                                    <input type="tel" class="form-control" id="InputNumber" onChange={Onchange} />
-                                </div>
-                            </div>
-                            <div className="">
-                                <button className="col-8 mt-3 btn disabled  lg-btn login-btn" id="btn" onClick={Popup}  >Next</button>
-                            </div>
-                            <p className="mt-5 " style={{ fontSize: '11px' }}>By continuing, you agree to our</p>
-                            <a href="#" style={{ fontSize: '12px', color: 'green', textDecoration: "underline" }}>Term of Service &nbsp;&nbsp; Privacy of Policy</a>
-                        </div>
-                    </Form>
+                    {
+                        input ? (<Login />) : (<OtpPage />)
+                    }
                 </Modal.Body>
             </Modal>
-
 
             {/*offcanvas For Cart */}
 
@@ -188,7 +273,6 @@ export default function Navbar(item) {
                                     <hr className="mt-5 border-2" />
                                 </div>
                                 <div className=" btn form-control fs-5 position-static bg-success d-flex justify-content-between text-light" onClick={handleShow}>
-
                                     <div className="price-item">
                                         <span>{cart.length} item</span>
                                         <span> . ₹{totalAmount}</span>

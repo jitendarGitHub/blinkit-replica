@@ -6,11 +6,6 @@ import Saras3 from "../asset/saras3.jpg"
 import Saras4 from "../asset/saras4.webp"
 import Saras5 from "../asset/saras5.jpg"
 import { adds, removes, add } from "../reducer/cartSlice";
-import Card from 'react-bootstrap/Card';
-import Carousel from 'react-bootstrap/Carousel'
-import { Products } from "../mockup/MockProduct";
-import Product from "../component/Product";
-import ReactImageMagnify from "image-magnify";
 
 export default function PerticularProduct(item) {
     const imgs = [

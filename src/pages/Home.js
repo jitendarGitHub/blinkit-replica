@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Advertise from "../component/Advartise";
 import Category from "./Category";
@@ -7,6 +7,10 @@ import Product from "../component/Product";
 import RollinkPaper from "../component/ProductRollingPaper";
 import { Products } from "../mockup/MockProduct";
 import "swiper/css";
+import Example, { Fun } from "../component/Login";
+import OtpPage, { Login } from "../component/Login";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const Home = () => {
     const cart = useSelector((state) => state.cart)
@@ -23,9 +27,20 @@ const Home = () => {
             );
         }
     };
+    const [input, setinput] = useState(true)
+    function pops() {
+        setinput(true)
+    }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     return (
         <>
             <Advertise />
+
             <Offers />
             <Category />
             <h3 className=" container fw-bold fs-4 ">Dairy, Bread & Eggs</h3>
