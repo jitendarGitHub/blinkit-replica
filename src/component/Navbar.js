@@ -51,6 +51,12 @@ export default function Navbar(item) {
         setinput(false)
     }
 
+    const [loc, setloc] = useState("Amplework Software Pvt. Ltd.")
+    function Location(e) {
+        const location = e.target.value;
+        setloc(location)
+    }
+
     return (
         <>
             <nav className="navbar bg-body-tertiary sticky-top" >
@@ -62,10 +68,10 @@ export default function Navbar(item) {
                         </span>
                     </span>
                     <div className=" delivery">
-                        <h5 className=" fs-4">Delivery 10 min</h5>
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={Show}>
-                            Amplework Software Pvt. Ltd.
-                        </a>
+                        <h5 className=" fs-5 fw-bold" style={{ letterSpacing: "0.1rem" }}>Delivery 10 min</h5>
+                        <span className="nav-link dropdown-toggle truncate w-40" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={Show}>
+                            {loc}
+                        </span>
                         <Modal show={state} onHide={Close} animation={false} className=" mt-5 ">
                             <Modal.Header closeButton>
                                 <p>Change-Location</p>
@@ -73,7 +79,7 @@ export default function Navbar(item) {
                             <Modal.Body className="d-flex justify-content-around">
                                 <button className="btn bg-success text-light" style={{ fontSize: "12px" }}>Detect my Location</button>
                                 <span className="mt-2 text-dark ">--</span><div className=" locations py-2">OR</div><span className="mt-2 text-dark">--</span>
-                                <input type="text" className="border-2" placeholder="Type your city Socity/colony...." />
+                                <input type="text" className="border-2" placeholder="Type your city Socity/colony...." onChange={Location} />
                             </Modal.Body>
                         </Modal>
                     </div>
