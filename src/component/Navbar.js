@@ -14,18 +14,21 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import swal from 'sweetalert';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Login from "./Login";
+import OtpPage from "./LoginOtp";
+import { Card } from "react-bootstrap";
+import Cart from "./Cart";
+import ShoppingBtn from "./ShoppingBtn";
 
 
 export default function Navbar(item) {
-
+    const cart = useSelector((state) => state.cart)
+    const navigate = useNavigate()
 
     const [data, setdata] = useState(false);
     const handleC = () => setdata(false);
     const handleS = () => setdata(true);
 
-    const [charge, setcharge] = useState(2)
-    const cart = useSelector((state) => state.cart)
-    const navigate = useNavigate()
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -38,10 +41,8 @@ export default function Navbar(item) {
 
 
     const [totalAmount, setTotalAmount] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
     useEffect(() => {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
-        setTotalQuantity(cart.reduce((acc, curr) => acc + curr.id, 0))
     }, [cart]);
 
 
@@ -49,117 +50,6 @@ export default function Navbar(item) {
     function Change() {
         setinput(false)
     }
-
-    function loginHandle(e) {
-        e.preventDefault()
-    }
-    const [usererr, setusererror] = useState(false)
-    function Onchange(e) {
-        let item = e.target.value;
-        if (item.length == 10) {
-            setusererror(true)
-        }
-        else {
-            setusererror(false)
-        }
-    }
-    function Popup() {
-        swal("Good job!", "Successful Logged In", "success")
-        navigate("/")
-    }
-
-    // const [login, setlogin] = useState(false);
-    // const login1 = () => setlogin(true)
-    // const logout = () => setlogin(false)
-
-    function Login(item) {
-        const [usererr, setusererror] = useState(false)
-        const Onchange = (e) => {
-            let data = e.target.value;
-            if (data.length === 10) {
-                setusererror(true);
-            }
-            else {
-                setusererror(false)
-            }
-        }
-
-        return (
-            <>
-                <div className="text-center  fw-light ">
-                    <span className="login" style={{ fontSize: '13px' }}>Enter your phone number to<br />
-                        Login/Sign up
-                    </span>
-                    <div class="col-8 mx-5 mt-3">
-                        <div class="input-group mx-4">
-                            <span class="input-group-text">
-                                <img src="https://cdn-icons-png.flaticon.com/512/4921/4921142.png" className="w-5 h-5 mx-1" />
-                                +91
-                            </span>
-                            <input type="number" className="form-control" id="InputNumber" onChange={Onchange} />
-                        </div>
-                    </div>
-                    {
-                        usererr ?
-                            (
-                                <Button size="lg" className="col-8 mt-3 btn bg-success lg-btn login-btn" onClick={Change} >
-                                    Next
-                                </Button>
-                            ) : <Button size="lg" className="col-8 mt-4 disabled lg-btn login-btn bg-secondary">
-                                Next
-                            </Button>
-                    }
-
-                    <p className="mt-5 " style={{ fontSize: '11px' }}>
-                        By continuing, you agree to our
-                    </p>
-                    <a href="#" style={{ fontSize: '12px', color: 'green', textDecoration: "underline" }}>
-                        Term of Service &nbsp;&nbsp; Privacy of Policy
-                    </a>
-                </div>
-            </>
-        );
-    }
-
-    function OtpPage() {
-        const navigate = useNavigate()
-        function Popup() {
-            swal("Good job!", "Successful Logged In", "success")
-            navigate("/")
-        }
-
-        return (
-            <>
-                <div className="mt-3 text-center otp-bg ">
-                    <span className="text-center">Enter 4 digit code sent to your phone  </span>
-                    <div className="otp mt-3  d-flex item-center justify-content-center gap-2">
-                        <div className=" ">
-                            <input type="text " className="border-2 fs-4 text-center" />
-                        </div>
-                        <div className=" ">
-                            <input type="text " className="border-2 fs-4 text-center" />
-                        </div>
-                        <div className=" ">
-                            <input type="text" className="border-2 fs-4 text-center" />
-                        </div>
-                        <div className=" ">
-                            <input type="text " className="border-2 fs-4 text-center" />
-                        </div>
-                    </div>
-                    <div>
-                        <Button onClick={Popup} className="bg-success form-control w-50 mt-3 ">OK</Button>
-                        <div className="text-success mt-3">
-                            <a href="#">Resend code</a>
-                        </div>
-                    </div>
-                </div>
-            </>
-        )
-
-    }
-
-
-
 
     return (
         <>
@@ -187,9 +77,9 @@ export default function Navbar(item) {
                             </Modal.Body>
                         </Modal>
                     </div>
-                    <form className=" col-sm-8 d-flex" role="search">
-                        <form className="nosubmit form-control">
-                            <input className="nosubmit form-control me-1 " type="search" placeholder="Search..." onClick={() => navigate("search-item")} />
+                    <div className="col-sm-8 d-flex" role="search">
+                        <form className="nosubmit h-[40px] form-control bh">
+                            <input className="nosubmit form-control bh me-1 " type="search" placeholder="Search..." onClick={() => navigate("search-item")} />
                         </form>
                         <NavLink >
                             <button className="btn fs-5 mx-3" type="submit" onClick={handleShow}>Login</button>
@@ -201,7 +91,7 @@ export default function Navbar(item) {
                                 <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </nav>
 
@@ -213,87 +103,22 @@ export default function Navbar(item) {
                 </Modal.Title>
                 <Modal.Body>
                     {
-                        input ? (<Login />) : (<OtpPage />)
+                        input ? (<Login change={Change} />) : (<OtpPage />)
                     }
                 </Modal.Body>
             </Modal>
 
+
+
             {/*offcanvas For Cart */}
-
-
             <Offcanvas show={data} onHide={handleC} className="offcanvas offcanvas-end">
                 <Offcanvas.Header closeButton className="header-color">
                     <Offcanvas.Title>My Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    {cart.length > 0 ? (
-                        <>
-                            <div className="container">
-                                <span className="text-gray-700 font-semibold mt-5 ">
-                                    Delivery in 10 minutes
-                                </span> <br />
-                                <span className="" style={{ color: "6e7177", fontSize: "14px" }}>
-                                    {cart.length} items
-                                </span>
-                                <div className="cart-Wrapper mt-5  p-2  ">
-                                    {cart.map((item) =>
-                                        <div className=" d-flex col-sm-8 cart-item mb-4 " key={item.id}>
-                                            <div className="img bg-success border-2 text-center mb-3 mx-2" style={{ width: "20%" }}>
-                                                <img src={item.image} alt="" width={'100%'} />
-                                            </div>
-                                            <div className="price mx-3" >
-                                                <p className="" style={{ fontSize: "13px" }}>{item.title}</p>
-                                                <h5 className="mt-3 d-flex fw-bold"><b className="mx-1">₹ </b>{item.price}
-                                                    <AddBtn />
-                                                </h5>
-                                            </div>
-                                        </div>
-
-                                    )}
-                                    <hr className="border-2" />
-                                    <div className="mt-5" style={{ color: "6e7177", fontSize: "13px" }}>
-                                        <div className="d-flex justify-content-between">
-                                            <span>MRP</span>
-                                            <span>₹ {totalAmount}</span>
-                                        </div>
-                                        <div className="d-flex justify-content-between ">
-                                            <span>Handling Charges</span>
-                                            <span>₹ {charge}</span>
-                                        </div>
-                                        <div className="d-flex justify-content-between ">
-                                            <span>Delivery Charges</span>
-                                            <span><del>₹50</del> FREE </span>
-                                        </div>
-                                        <div className="d-flex justify-content-between mt-3 fw-bold">
-                                            <span>Grand Total</span>
-                                            <span>₹ {totalAmount + 2}</span>
-                                        </div>
-                                        <p className="mt-3">Coupons are only applicable on the Blinkit app</p>
-                                    </div>
-                                    <hr className="mt-5 border-2" />
-                                </div>
-                                <div className=" btn form-control fs-5 position-static bg-success d-flex justify-content-between text-light" onClick={handleShow}>
-                                    <div className="price-item">
-                                        <span>{cart.length} item</span>
-                                        <span> . ₹{totalAmount}</span>
-                                    </div>
-                                    <div className="d-flex">
-                                        <span>Proceed </span>
-                                        <img src={proceed} className="mx-2 w-5 h-8  " />
-                                    </div>
-                                </div>
-                            </div>
-                        </>
-                    ) : <>
-                        <div className="min-h-[80vh] flex flex-col items-center justify-center">
-                            <h1 className="text-gray-700 font-semibold text-xl mb-2">  Your cart is empty!  </h1>
-
-                            <button className="bg-purple-700  rounded-lg text-white transition duration-300 ease-linear mt-5 border-2 border-purple-600 font-bold hover:text-purple-700 p-3" onClick={() => navigate("/")} >
-                                SHOP NOW
-                            </button>
-
-                        </div>
-                    </>}
+                    {
+                        cart.length > 0 ? (<Cart handleShow={handleShow} proceed={proceed} />) : (<ShoppingBtn />)
+                    }
                 </Offcanvas.Body>
             </Offcanvas>
         </>

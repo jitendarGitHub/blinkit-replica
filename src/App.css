@@ -14,7 +14,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .App-logo { 
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -276,7 +276,7 @@ input[type="search"]::placeholder {
 input[type="search"]:focus {
   box-shadow: 0 0 3px 0 #1183d6;
   border-color: #1183d6;
-  outline: none;
+  outline:none;
 }
 form.nosubmit {
   border: none;
@@ -295,4 +295,19 @@ input.nosubmit {
   height: 40px;
 }
  
+
+.bh:after{
+  content: '';
+  animation: changetext 10s infinite linear;
+  color: #d2dad8;
+ }  
+ @keyframes changetext{
+  0%{content:"sugar" ;}
+  20%{content:"paneer" ;}
+  35%{content:"oil" ;}
+  50%{content:"milk" ;}
+  65%{content:"butter" ;}
+  80%{content:"masala" ;}
+  100%{content:"egg" ;}
+ }
  
