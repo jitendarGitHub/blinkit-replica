@@ -1,54 +1,48 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import { useState } from "react";
 import { useEffect } from "react";
-import AddBtn from "./AddBtn";
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
-import SearchItem from "../pages/SearchItem";
 import proceed from "../asset/greter.png"
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
-import swal from 'sweetalert';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 import Login from "./Login";
 import OtpPage from "./LoginOtp";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Cart from "./Cart";
 import ShoppingBtn from "./ShoppingBtn";
-
+import swal from 'sweetalert';
 
 export default function Navbar(item) {
     const cart = useSelector((state) => state.cart)
     const navigate = useNavigate()
 
-    const [data, setdata] = useState(false);
+    const [data, setdata] = useState(false);//for cart modal
     const handleC = () => setdata(false);
     const handleS = () => setdata(true);
 
-
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);// for Login modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [state, setState] = useState(false);
+
+    const [state, setState] = useState(false);// for location modal
     const Show = () => setState(true);
     const Close = () => setState(false);
-
-
 
     const [totalAmount, setTotalAmount] = useState(0);
     useEffect(() => {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
     }, [cart]);
 
-
     const [input, setinput] = useState(true)
     function Change() {
         setinput(false)
+        setBackImg(true)
+    }
+    function Cat() {
+        setinput(true)
+        setBackImg(false)
     }
 
     const [loc, setloc] = useState("Amplework Software Pvt. Ltd.")
@@ -56,6 +50,9 @@ export default function Navbar(item) {
         const location = e.target.value;
         setloc(location)
     }
+
+
+    const [BackImg, setBackImg] = useState(false)
 
     return (
         <>
@@ -77,8 +74,13 @@ export default function Navbar(item) {
                                 <p>Change-Location</p>
                             </Modal.Header>
                             <Modal.Body className="d-flex justify-content-around">
-                                <button className="btn bg-success text-light" style={{ fontSize: "12px" }}>Detect my Location</button>
-                                <span className="mt-2 text-dark ">--</span><div className=" locations py-2">OR</div><span className="mt-2 text-dark">--</span>
+                                <button className="btn bg-success text-light" style={{ fontSize: "12px" }}>
+                                    Detect my Location
+                                </button>
+                                <span className="mt-2 text-dark ">--</span>
+                                <div className=" locations py-2">
+                                    OR
+                                </div><span className="mt-2 text-dark">--</span>
                                 <input type="text" className="border-2" placeholder="Type your city Socity/colony...." onChange={Location} />
                             </Modal.Body>
                         </Modal>
@@ -87,13 +89,12 @@ export default function Navbar(item) {
                         <form className="nosubmit h-[40px] form-control bh">
                             <input className="nosubmit form-control bh me-1 " type="search" placeholder="Search..." onClick={() => navigate("search-item")} />
                         </form>
-                        <NavLink >
-                            <button className="btn fs-5 mx-3" type="submit" onClick={handleShow}>Login</button>
-                        </NavLink>
+                        <Button variant="ligth" className="btn fs-5 mx-3" onClick={handleShow}>Login</Button>
+
                         <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
-                            <img className="  colmnss w-6 h-6 " src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={handleS} />
-                            <div className="container " >
-                                <span className="text-white   w-1">{cart.length} item</span>
+                            <img className="  colmnss w-6 h-6" src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={handleS} />
+                            <div className="container ">
+                                <span className="text-white w-1">{cart.length} item</span>
                                 <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>
                             </div>
                         </div>
@@ -104,17 +105,24 @@ export default function Navbar(item) {
             {/* for Login */}
 
             <Modal show={show} onHide={handleClose} centered>
-                <Modal.Title className="fs-4 phone-header mt-4 mb-4">
-                    Phone Number Varification
-                </Modal.Title>
+                <div className=" d-flex fs-4 phone-header mt-4 mb-4 text-center">
+                    <div className=" mx-1 main w-20">
+                        {
+                            BackImg ? (
+                                <img className="" src="https://cdn-icons-png.flaticon.com/512/6416/6416958.png" width={"30px"} onClick={Cat} />
+                            ) : (<></>)
+                        }
+                    </div>
+                    <p className="text-center mx-5">
+                        Phone Number Varification
+                    </p>
+                </div>
                 <Modal.Body>
                     {
-                        input ? (<Login change={Change} />) : (<OtpPage />)
+                        input ? (<Login change={Change} />) : (<OtpPage change={handleClose} cat={Cat} />)
                     }
                 </Modal.Body>
             </Modal>
-
-
 
             {/*offcanvas For Cart */}
             <Offcanvas show={data} onHide={handleC} className="offcanvas offcanvas-end">

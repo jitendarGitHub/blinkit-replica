@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 export default function Login(props) {
     const [usererr, setusererror] = useState(false)
     const Onchange = (e) => {
+        setnumber(e.target.value)
         let data = e.target.value;
         if (data.length === 10) {
             setusererror(true);
@@ -12,6 +13,9 @@ export default function Login(props) {
             setusererror(false)
         }
     }
+
+    const [number, setnumber] = useState()
+    const InputValue = number;
 
     return (
         <>
@@ -25,7 +29,7 @@ export default function Login(props) {
                             <img src="https://cdn-icons-png.flaticon.com/512/4921/4921142.png" className="w-5 h-5 mx-1" />
                             +91
                         </span>
-                        <input type="number" className="form-control" id="InputNumber" onChange={Onchange} />
+                        <input type="number" maxLength="10" className="form-control" id="InputNumber" onChange={Onchange} />
                     </div>
                 </div>
                 {
@@ -34,7 +38,7 @@ export default function Login(props) {
                             <Button size="lg" className="col-8 mt-4 btn bg-success lg-btn" onClick={props.change} >
                                 Next
                             </Button>
-                        ) : <Button size="lg" className="col-8 mt-4 disabled lg-btn bg-secondary">
+                        ) : <Button size="lg" className="col-8 mt-4 disabled lg-btn bg-secondary ">
                             Next
                         </Button>
                 }
@@ -48,4 +52,4 @@ export default function Login(props) {
             </div>
         </>
     );
-}
+} 
