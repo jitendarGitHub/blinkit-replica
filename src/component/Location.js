@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { useNavigate } from 'react-router'
 
-class Location extends Component {
+class Locatios extends Component {
 
     constructor(props) {
         super(props)

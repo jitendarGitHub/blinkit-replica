@@ -11,19 +11,21 @@ import OtpPage from "./LoginOtp";
 import { Button, Card } from "react-bootstrap";
 import Cart from "./Cart";
 import ShoppingBtn from "./ShoppingBtn";
-import swal from 'sweetalert';
+import { Form } from "react-bootstrap";
 
 export default function Navbar(item) {
     const cart = useSelector((state) => state.cart)
     const navigate = useNavigate()
 
-    const [data, setdata] = useState(false);//for cart modal
-    const handleC = () => setdata(false);
-    const handleS = () => setdata(true);
+    const [CartData, setCartData] = useState(false);//for cart modal
+    const CartShow = () => setCartData(true);
+    const CartClose = () => setCartData(false);
+    console.log("cart modal :", CartData)
 
-    const [show, setShow] = useState(false);// for Login modal
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [Modalshow, setModalShow] = useState(false);// for Login modal
+    const ModalCloseFun = () => setModalShow(false);
+    const ModalShowFun = () => setModalShow(true);
+    console.log("modal", Modalshow)
 
 
     const [state, setState] = useState(false);// for location modal
@@ -35,22 +37,23 @@ export default function Navbar(item) {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
     }, [cart]);
 
-    const [input, setinput] = useState(true)
-    function Change() {
-        setinput(false)
+
+    const [LoginInput, setLoginInput] = useState(true) // for login Input button
+    function LoginBtnFun() {
+        console.log("Login Inputs", LoginInput)
+        setLoginInput(false)
         setBackImg(true)
     }
-    function Cat() {
-        setinput(true)
+    function LoginModal() {
+        setLoginInput(true)
         setBackImg(false)
     }
 
-    const [loc, setloc] = useState("Amplework Software Pvt. Ltd.")
+    const [location, setLocation] = useState("Amplework Software Pvt. Ltd.")
     function Location(e) {
-        const location = e.target.value;
-        setloc(location)
+        const InputLocation = e.target.value;
+        setLocation(InputLocation)
     }
-
 
     const [BackImg, setBackImg] = useState(false)
 
@@ -64,10 +67,14 @@ export default function Navbar(item) {
                             it
                         </span>
                     </span>
-                    <div className=" delivery">
-                        <h5 className=" fs-5 fw-bold" style={{ letterSpacing: "0.1rem" }}>Delivery 10 min</h5>
+                    <div className="delivery">
+                        <h5
+                            className=" fs-5 fw-bold"
+                            style={{ letterSpacing: "0.1rem" }}>
+                            Delivery 10 min
+                        </h5>
                         <span className="nav-link dropdown-toggle truncate w-40" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={Show}>
-                            {loc}
+                            {location}
                         </span>
                         <Modal show={state} onHide={Close} animation={false} className=" mt-5 ">
                             <Modal.Header closeButton>
@@ -77,22 +84,34 @@ export default function Navbar(item) {
                                 <button className="btn bg-success text-light" style={{ fontSize: "12px" }}>
                                     Detect my Location
                                 </button>
-                                <span className="mt-2 text-dark ">--</span>
-                                <div className=" locations py-2">
-                                    OR
-                                </div><span className="mt-2 text-dark">--</span>
-                                <input type="text" className="border-2" placeholder="Type your city Socity/colony...." onChange={Location} />
+                                <span className="mt-2 text-dark " >--</span>
+                                <div className=" locations py-2" separator={<>fgsdhjsdgfh</>}>OR</div>
+                                <span className="mt-2 text-dark">--</span>
+                                <input
+                                    type="text"
+                                    className="border-2"
+                                    placeholder="Type your city Socity/colony...."
+                                    onChange={Location}
+                                />
                             </Modal.Body>
                         </Modal>
                     </div>
-                    <div className="col-sm-8 d-flex" role="search">
-                        <form className="nosubmit h-[40px] form-control bh">
-                            <input className="nosubmit form-control bh me-1 " type="search" placeholder="Search..." onClick={() => navigate("search-item")} />
-                        </form>
-                        <Button variant="ligth" className="btn fs-5 mx-3" onClick={handleShow}>Login</Button>
+                    <div className="col-sm-8 d-flex">
+                        <Form className="nosubmit h-[40px] form-control bh">
+                            <input
+                                className="nosubmit form-control bh me-1"
+                                type="search"
+                                placeholder="Search..."
+                                onClick={() => navigate("search-item")} />
+                        </Form>
+                        <Button
+                            variant="ligth" className="btn fs-5 mx-3"
+                            onClick={ModalShowFun}>
+                            Login
+                        </Button>
 
                         <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
-                            <img className="  colmnss w-6 h-6" src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={handleS} />
+                            <img className="  colmnss w-6 h-6" src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={CartShow} />
                             <div className="container ">
                                 <span className="text-white w-1">{cart.length} item</span>
                                 <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>
@@ -104,14 +123,15 @@ export default function Navbar(item) {
 
             {/* for Login */}
 
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal show={Modalshow} onHide={ModalCloseFun} centered>
                 <div className=" d-flex fs-4 phone-header mt-4 mb-4 text-center">
                     <div className=" mx-1 main w-20">
-                        {
-                            BackImg ? (
-                                <img className="" src="https://cdn-icons-png.flaticon.com/512/6416/6416958.png" width={"30px"} onClick={Cat} />
-                            ) : (<></>)
-                        }
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/6416/6416958.png"
+                            className={BackImg ? "d-block" : "d-none"}
+                            width={"30px"}
+                            onClick={LoginModal}
+                        />
                     </div>
                     <p className="text-center mx-5">
                         Phone Number Varification
@@ -119,19 +139,23 @@ export default function Navbar(item) {
                 </div>
                 <Modal.Body>
                     {
-                        input ? (<Login change={Change} />) : (<OtpPage change={handleClose} cat={Cat} />)
+                        LoginInput ? (<Login loginbtn={LoginBtnFun} />) : (<OtpPage change={ModalShowFun} premodalstate={LoginModal} close={ModalCloseFun} />)
                     }
                 </Modal.Body>
             </Modal>
 
             {/*offcanvas For Cart */}
-            <Offcanvas show={data} onHide={handleC} className="offcanvas offcanvas-end">
+            <Offcanvas
+                show={CartData}
+                onHide={CartClose}
+                placement="end"
+                className="offcanvas offcanvas-end">
                 <Offcanvas.Header closeButton className="header-color">
                     <Offcanvas.Title>My Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     {
-                        cart.length > 0 ? (<Cart handleShow={handleShow} proceed={proceed} />) : (<ShoppingBtn />)
+                        cart.length > 0 ? (<Cart handleShow={ModalShowFun} proceed={proceed} />) : (<ShoppingBtn close={CartClose} />)
                     }
                 </Offcanvas.Body>
             </Offcanvas>

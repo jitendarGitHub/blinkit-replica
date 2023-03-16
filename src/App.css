@@ -249,7 +249,7 @@ body{
   margin-left: -100px;
 } 
 .out-of-stock{
-  width:50px;
+  width:50px; 
   height: 50px;
   margin-left: -50px;
   margin-top: 30px;
@@ -313,4 +313,21 @@ input.nosubmit {
  .ul{
   text-decoration: underline;
  }
- 
+ .authInput{
+  width:5em;
+  background-color: skyblue;
+  height:1.7em;
+  text-align:center;
+  margin-right:0.1%;
+  font-size:2em;
+  border-radius: 6px; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} 
+input[type="number"] {
+  -moz-appearance: textfield;
+}

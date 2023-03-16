@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import PhoneInput from 'react-phone-number-input'
 
 export default function Login(props) {
+    const { loginbtn } = props
     const [usererr, setusererror] = useState(false)
     const Onchange = (e) => {
         setnumber(e.target.value)
@@ -29,19 +31,23 @@ export default function Login(props) {
                             <img src="https://cdn-icons-png.flaticon.com/512/4921/4921142.png" className="w-5 h-5 mx-1" />
                             +91
                         </span>
-                        <input type="number" maxLength="10" className="form-control" id="InputNumber" onChange={Onchange} />
+                        <input
+                            type="number"
+                            maxLength={10}
+                            className="form-control"
+                            id="InputNumber"
+                            onChange={Onchange}
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                        />
                     </div>
                 </div>
-                {
-                    usererr ?
-                        (
-                            <Button size="lg" className="col-8 mt-4 btn bg-success lg-btn" onClick={props.change} >
-                                Next
-                            </Button>
-                        ) : <Button size="lg" className="col-8 mt-4 disabled lg-btn bg-secondary ">
-                            Next
-                        </Button>
-                }
+                <Button
+                    size="lg"
+                    className={usererr ? "col-8 mt-4 btn bg-success lg-btn" : "col-8 mt-4 disabled lg-btn bg-secondary "}
+                    onClick={loginbtn}>
+                    Next
+                </Button>
 
                 <p className="mt-5 " style={{ fontSize: '11px' }}>
                     By continuing, you agree to our

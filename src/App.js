@@ -5,7 +5,7 @@ import Navbar from './component/Navbar';
 import Home from './pages/Home';
 import Cart from './component/Cart';
 import CategoryItem from './pages/CategoryItems'
-import PerticularProduct from './pages/PerticularProduct';
+import PerticularProduct from '../src/pages/SingleProduct';
 import CategoryNavbar from './pages/CategoryNavbar';
 import CategoryItem2 from './pages/CategoryItem2';
 import { CarouselItem } from 'react-bootstrap';

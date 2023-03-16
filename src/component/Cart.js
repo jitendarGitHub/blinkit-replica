@@ -11,6 +11,7 @@ export default function Cart(props) {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
         setTotalQuantity(cart.reduce((acc, curr) => acc + curr.id, 0))
     }, [cart]);
+
     return (
         <>
             <div className="container">
@@ -47,7 +48,7 @@ export default function Cart(props) {
                         </div>
                         <div className="d-flex justify-content-between ">
                             <span>Delivery Charges</span>
-                            <span><del>₹50</del> FREE </span>
+                            <span><del>50</del> FREE </span>
                         </div>
                         <div className="d-flex justify-content-between mt-3 fw-bold">
                             <span>Grand Total</span>

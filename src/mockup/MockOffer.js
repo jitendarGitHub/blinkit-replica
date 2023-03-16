@@ -5,7 +5,8 @@ const Offer = [
     },
     {
         id: 2,
-        image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=450/layout-engine/2023-03/ice-cream_WEB.jpg"
+        image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=450/layout-engine/2023-03/ice-cream_WEB.jpg",
+
     },
     {
         id: 3,
