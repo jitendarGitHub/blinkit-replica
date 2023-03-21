@@ -32,11 +32,21 @@ export default function CategoryItem() {
                                 Relavance
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{ fontSize: "12px" }}>
-                                <Dropdown.Item ><input type="radio" className="mx-1   border-2" name="check" /> Price(Low to High)</Dropdown.Item>
-                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" /> Price (High to low)</Dropdown.Item>
-                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Discount(high to Low )</Dropdown.Item>
-                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Relavance</Dropdown.Item>
-                                <Dropdown.Item ><input type="radio" name="check" className="mx-1   border-2" />Name(A to Z</Dropdown.Item>
+                                <Dropdown.Item >
+                                    <input type="radio" className="mx-1   border-2" name="check" /> Price(Low to High)
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <input type="radio" name="check" className="mx-1   border-2" /> Price (High to low)
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <input type="radio" name="check" className="mx-1   border-2" />Discount(high to Low )
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <input type="radio" name="check" className="mx-1   border-2" />Relavance
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <input type="radio" name="check" className="mx-1   border-2" />Name(A to Z
+                                </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>

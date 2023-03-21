@@ -6,7 +6,6 @@ export default function Login(props) {
     const { loginbtn } = props
     const [usererr, setusererror] = useState(false)
     const Onchange = (e) => {
-        setnumber(e.target.value)
         let data = e.target.value;
         if (data.length === 10) {
             setusererror(true);
@@ -15,9 +14,6 @@ export default function Login(props) {
             setusererror(false)
         }
     }
-
-    const [number, setnumber] = useState()
-    const InputValue = number;
 
     return (
         <>

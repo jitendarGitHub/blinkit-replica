@@ -20,12 +20,10 @@ export default function Navbar(item) {
     const [CartData, setCartData] = useState(false);//for cart modal
     const CartShow = () => setCartData(true);
     const CartClose = () => setCartData(false);
-    console.log("cart modal :", CartData)
 
     const [Modalshow, setModalShow] = useState(false);// for Login modal
     const ModalCloseFun = () => setModalShow(false);
     const ModalShowFun = () => setModalShow(true);
-    console.log("modal", Modalshow)
 
 
     const [state, setState] = useState(false);// for location modal
@@ -38,9 +36,8 @@ export default function Navbar(item) {
     }, [cart]);
 
 
-    const [LoginInput, setLoginInput] = useState(true) // for login Input button
+    const [LoginInput, setLoginInput] = useState(true)
     function LoginBtnFun() {
-        console.log("Login Inputs", LoginInput)
         setLoginInput(false)
         setBackImg(true)
     }
@@ -57,9 +54,12 @@ export default function Navbar(item) {
 
     const [BackImg, setBackImg] = useState(false)
 
+
+
+
     return (
         <>
-            <nav className="navbar bg-body-tertiary sticky-top" >
+            <nav className="navbar bg-body-tertiary sticky-top " >
                 <div className="container-fluid">
                     <span className="fw-bolder fs-1 text-warning" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                         blink
@@ -102,16 +102,21 @@ export default function Navbar(item) {
                                 className="nosubmit form-control bh me-1"
                                 type="search"
                                 placeholder="Search..."
-                                onClick={() => navigate("search-item")} />
+                                onClick={() => navigate("search-item")}
+                            />
                         </Form>
                         <Button
                             variant="ligth" className="btn fs-5 mx-3"
                             onClick={ModalShowFun}>
                             Login
                         </Button>
-
                         <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
-                            <img className="  colmnss w-6 h-6" src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg" alt="cart" onClick={CartShow} />
+                            <img
+                                className="  colmnss w-6 h-6"
+                                src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg"
+                                alt="cart"
+                                onClick={CartShow}
+                            />
                             <div className="container ">
                                 <span className="text-white w-1">{cart.length} item</span>
                                 <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>

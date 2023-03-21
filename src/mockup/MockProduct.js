@@ -6,7 +6,9 @@ export const Products = [
         title: "Saras Toned Fresh Milk",
         weight: "500g",
         price: 25,
-        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
+        outofStock: true, //for btn
+        quantity: 1
     },
     {
         count: 0,
@@ -15,7 +17,8 @@ export const Products = [
         title: "Nestle MilkMaid Sweetned...",
         weight: "1kg",
         price: 240,
-        offer: "15% off"
+        offer: "15% off",
+        quantity: 1
     },
     {
         count: 0,
@@ -24,7 +27,9 @@ export const Products = [
         title: "Amul Blend Dieced Cheez..",
         weight: "200g",
         price: 118,
-        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
+        outofStock: true,
+        quantity: 1
     },
     {
         count: 0,
@@ -33,6 +38,7 @@ export const Products = [
         title: "Saras Paneer..",
         weight: "350g",
         price: 98,
+        quantity: 1
     },
     {
         count: 0,
@@ -41,7 +47,8 @@ export const Products = [
         title: "Harvest Gold Hearty Brown Bread..",
         weight: "400g",
         price: 48,
-        offer: "20% off "
+        offer: "20% off ",
+        quantity: 1
     },
     {
         count: 0,
@@ -50,6 +57,7 @@ export const Products = [
         title: "Jaipur Egg Bazaar Fresh White Egg..",
         weight: "6 Pieces",
         price: 42,
+        quantity: 1
     },
     {
         count: 0,
@@ -57,7 +65,8 @@ export const Products = [
         image: " https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/160a.jpg?ts=1654778815",
         title: "Amul Salted Butter..",
         weight: "500g",
-        price: 275
+        price: 275,
+        quantity: 1
     },
     {
         count: 0,
@@ -65,7 +74,8 @@ export const Products = [
         image: " https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/125240a.jpg?ts=1654778894 ",
         title: "Amul CHeez Slices..",
         weight: "750g",
-        price: 78
+        price: 78,
+        quantity: 1
     },
     {
         count: 0,
@@ -74,7 +84,9 @@ export const Products = [
         title: "Hravest Gold Sandwhich White Bread",
         weight: '450g',
         price: 37,
-        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
+        outofStock: true,
+        quantity: 1
     },
     {
         count: 0,
@@ -83,6 +95,7 @@ export const Products = [
         title: "Amul Mithai Mate Condensed Milk",
         weight: '2kg',
         price: 50,
+        quantity: 1
     },
     {
         count: 0,
@@ -90,7 +103,8 @@ export const Products = [
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/366421a.jpg",
         title: "Amul Butter",
         weight: '1kg',
-        price: 30
+        price: 30,
+        quantity: 1
     },
     {
         count: 0,
@@ -99,7 +113,9 @@ export const Products = [
         title: "Amul CHeez Slices..",
         weight: "750g",
         price: 80,
-        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png"
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
+        outofStock: true,
+        quantity: 1
     },
     {
         count: 0,
@@ -107,7 +123,8 @@ export const Products = [
         image: " https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/160a.jpg?ts=1654778815",
         title: "Amul Salted Butter..",
         weight: "500g",
-        price: 200
+        price: 200,
+        quantity: 1
     },
     {
         count: 0,
@@ -115,7 +132,8 @@ export const Products = [
         image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=180/app/images/products/sliding_image/95609a.jpg?ts=1625639870",
         title: "Hravest Gold Sandwhich White Bread",
         weight: '450g',
-        price: 45
+        price: 45,
+        quantity: 1
     },
     {
         count: 0,
@@ -124,8 +142,6 @@ export const Products = [
         title: "Amul Blend Dieced Cheez..",
         weight: "200g",
         price: 100,
+        quantity: 1
     },
-
-
-
 ]

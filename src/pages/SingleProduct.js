@@ -107,47 +107,92 @@ export default function PerticularProduct(item) {
                             <h4 className="fs-4 title">Saras Shudh Ghee</h4>
                             <div className="mt-2 d-flex">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                    <label className="form-check-label" for="flexRadioDefault1"> 1kg  </label>
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="flexRadioDefault"
+                                        id="flexRadioDefault1"
+                                    />
+                                    <label
+                                        className="form-check-label"
+                                        for="flexRadioDefault1">
+                                        1kg
+                                    </label>
                                 </div>
                                 <div className="form-check mx-3">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                    <label className="form-check-label" for="flexRadioDefault2">2kg  </label>
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="flexRadioDefault"
+                                        id="flexRadioDefault2"
+                                    />
+                                    <label
+                                        className="form-check-label"
+                                        for="flexRadioDefault2">
+                                        2kg
+                                    </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                    <label className="form-check-label" for="flexRadioDefault2">3kg  </label>
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="flexRadioDefault"
+                                        id="flexRadioDefault2"
+                                    />
+                                    <label
+                                        className="form-check-label"
+                                        for="flexRadioDefault2">
+                                        3kg
+                                    </label>
                                 </div>
                             </div>
                             <div className="btns mt-3">
-                                <div className=" items-center justify-between  "> {cart.some((p) => p.id === item.id) ? (
-                                    <div className="btns">
-                                        <button className='btn btn-success ' onClick={() => { dispatch(adds(1)) }}><span >+</span></button><span className="mx-2">{cart.length}</span>
-                                        <button className='btn btn-success mx-2 ' onClick={() => { dispatch(removes(-1)) }}><span>-</span></button>
-                                    </div>
-                                ) : (<button className="btn btn-success" onClick={addToCart} >Add to cart</button>
-                                )
-                                }
+                                <div className=" items-center justify-between">
+                                    {
+                                        cart.some((p) => p.id === item.id) ? (
+                                            <div className="btns">
+                                                <button
+                                                    className='btn btn-success'
+                                                    onClick={() => { dispatch(add(1)) }}>
+                                                    +
+                                                </button>
+                                                <span className="mx-2">
+                                                    {cart.length}
+                                                </span>
+                                                <button
+                                                    className='btn btn-success mx-2'
+                                                    onClick={() => { dispatch(removes(-1)) }}>
+                                                    -
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <button
+                                                className="btn btn-success"
+                                                onClick={addToCart} >
+                                                Add to cart
+                                            </button>
+                                        )
+                                    }
                                 </div>
                             </div>
                             <span className="mt-2 fw-bold ">Why shop from blinkit?</span>
                             <div className="condition ">
                                 <div className="flex">
-                                    <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=90/assets/web/blinkit-promises/10_minute_delivery.png" alt="" className="imgs mt-3" />
-                                    <span className="mt-4 col-9 mx-3" >
-                                        Superfast Delivery
-                                        Get your order delivered to your doorstep at the earliest from dark stores near you</span>
+                                    <img
+                                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=90/assets/web/blinkit-promises/10_minute_delivery.png"
+                                        className="imgs mt-3"
+                                    />
+                                    <span className="mt-4 col-9 mx-3" > Superfast Delivery Get your order delivered to your doorstep at the earliest from dark stores near you
+                                    </span>
                                 </div>
                                 <div className="flex">
                                     <img src=" https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=90/assets/web/blinkit-promises/Best_Prices_Offers.png" alt="" className="imgs mt-3" />
                                     <span className="mt-4 col-9 mx-3" >
-                                        Best Prices & Offers
-                                        Best price destination with offers directly from the manufacturers.</span>
+                                        Best Prices & Offers Best price destination with offers directly from the manufacturers.</span>
                                 </div>
                                 <div className="flex">
                                     <img src="  https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=90/assets/web/blinkit-promises/Wide_Assortment.png" alt="" className="imgs mt-3" />
-                                    <span className="mt-4 col-9 mx-3" >Wide Assortment
-                                        Choose from 5000+ products across food, personal care, household & other categories.</span>
+                                    <span className="mt-4 col-9 mx-3" >Wide Assortment Choose from 5000+ products across food, personal care, household & other categories.</span>
                                 </div>
                             </div>
                         </div>
