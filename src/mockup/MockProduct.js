@@ -6,9 +6,7 @@ export const Products = [
         title: "Saras Toned Fresh Milk",
         weight: "500g",
         price: 25,
-        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
-        outofStock: true, //for btn
-        quantity: 1
+        quantity: 1,
     },
     {
         count: 0,
@@ -57,6 +55,8 @@ export const Products = [
         title: "Jaipur Egg Bazaar Fresh White Egg..",
         weight: "6 Pieces",
         price: 42,
+        outofstock: "https://cdn-icons-png.flaticon.com/512/5267/5267510.png",
+        outofStock: true,
         quantity: 1
     },
     {

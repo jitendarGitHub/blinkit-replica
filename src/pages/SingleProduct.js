@@ -5,7 +5,7 @@ import Saras2 from "../asset/saras2.webp"
 import Saras3 from "../asset/saras3.jpg"
 import Saras4 from "../asset/saras4.webp"
 import Saras5 from "../asset/saras5.jpg"
-import { adds, removes, add } from "../reducer/cartSlice";
+import { adds, removes, add, incrementItem, decrementItem } from "../reducer/cartSlice";
 
 export default function PerticularProduct(item) {
     const imgs = [
@@ -29,7 +29,6 @@ export default function PerticularProduct(item) {
             id: 5,
             image: Saras5
         }
-
     ];
 
     const [sliderdata, setsliderdata] = useState(imgs[0]);
@@ -39,10 +38,7 @@ export default function PerticularProduct(item) {
         const slider = imgs[index];
         setsliderdata(slider)
     }
-    const addToCart = () => {
-        dispatch(add(item));
 
-    }
     return (
         <>
             <div className="container">
@@ -148,31 +144,53 @@ export default function PerticularProduct(item) {
                             </div>
                             <div className="btns mt-3">
                                 <div className=" items-center justify-between">
-                                    {
+                                    {/* {
                                         cart.some((p) => p.id === item.id) ? (
                                             <div className="btns">
                                                 <button
                                                     className='btn btn-success'
-                                                    onClick={() => { dispatch(add(1)) }}>
+                                                    onClick={() => { dispatch(incrementItem(item.id)) }}>
                                                     +
                                                 </button>
                                                 <span className="mx-2">
-                                                    {cart.length}
+                                                    {item.quantity}
                                                 </span>
                                                 <button
                                                     className='btn btn-success mx-2'
-                                                    onClick={() => { dispatch(removes(-1)) }}>
+                                                    onClick={() => { dispatch(decrementItem(item.id)) }}>
                                                     -
                                                 </button>
                                             </div>
                                         ) : (
                                             <button
                                                 className="btn btn-success"
-                                                onClick={addToCart} >
+                                                onClick={incrementItem(item.id)} >
                                                 Add to cart
                                             </button>
                                         )
-                                    }
+                                    } */}
+                                    {item.quantity == 0 ? (
+                                        <button
+                                            className="btn btn-success"
+                                            onClick={() => dispatch(incrementItem(item.id))} >
+                                            Add to cart
+                                        </button>
+                                    ) : (
+                                        <>
+                                            <button
+                                                className='btn btn-success'
+                                                onClick={() => { dispatch(incrementItem(item.id)) }}>
+                                                +
+                                            </button>
+                                            <span className="mx-2">{item.quantity}</span>
+                                            {console.log("quantity :", item.quantity)}
+                                            <button
+                                                className='btn btn-success'
+                                                onClick={() => { dispatch(decrementItem(item.id)) }}>
+                                                -
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             <span className="mt-2 fw-bold ">Why shop from blinkit?</span>

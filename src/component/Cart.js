@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Button from 'react-bootstrap/Button';
-import { remove } from "../reducer/cartSlice";
+import { decrementItem, incrementItem } from "../reducer/cartSlice";
 
 export default function Cart(props) {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
     const [charge, setcharge] = useState(2)
-    const [totalAmount, setTotalAmount] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
-    const [totalDiscount, settotalDiscount] = useState(0)
-    useEffect(() => {
-        setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
-        setTotalQuantity(cart.reduce((acc, curr) => acc + curr.id, 0))
-        settotalDiscount(cart.reduce(() => discount))
-    }, [cart]);
 
-    const discount = totalAmount / 100 * 15
-
+    const cartQuantity = cart.length;
+    const TotalAmount = cart.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
+    const discount = TotalAmount / 100 * 15
 
     return (
         <>
@@ -26,7 +18,7 @@ export default function Cart(props) {
                     Delivery in 10 minutes
                 </span> <br />
                 <span className="" style={{ color: "6e7177", fontSize: "14px" }}>
-                    {cart.length} items
+                    {cartQuantity} items
                 </span>
                 <div className="cart-Wrapper mt-5  p-2  ">
                     {cart.map((item) =>
@@ -39,11 +31,27 @@ export default function Cart(props) {
                                 <h5 className="mt-3 d-flex fw-bold w-100 justify-content-around ">
                                     <p className=" w-20 fs-6">₹{item.price}</p>
                                     <div className="">
-                                        <Button
-                                            className="bg-danger border-none"
-                                            onClick={() => dispatch(remove(item.id))}>
-                                            Remove
-                                        </Button>
+                                        {item.quantity == 0 ? (
+                                            <button
+                                                className="btn btn-success"
+                                                onClick={() => dispatch(incrementItem(item.id))} >
+                                                Add to cart
+                                            </button>
+                                        ) : (
+                                            <>
+                                                <button
+                                                    className='btn btn-success'
+                                                    onClick={() => { dispatch(incrementItem(item.id)) }}>
+                                                    +
+                                                </button>
+                                                <span className="mx-2">{item.quantity}</span>
+                                                <button
+                                                    className='btn btn-success'
+                                                    onClick={() => { dispatch(decrementItem(item.id)) }}>
+                                                    -
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </h5>
                             </div>
@@ -54,7 +62,7 @@ export default function Cart(props) {
                     <div className="mt-5" style={{ color: "6e7177", fontSize: "13px" }}>
                         <div className="d-flex justify-content-between">
                             <span>MRP</span>
-                            <span>₹ {totalAmount}</span>
+                            <span>₹ {TotalAmount}</span>
                         </div>
                         <div className="d-flex justify-content-between">
                             <span>Total Discount</span>
@@ -66,11 +74,11 @@ export default function Cart(props) {
                         </div>
                         <div className="d-flex justify-content-between ">
                             <span>Delivery Charges</span>
-                            <span><del>50</del> FREE </span>
+                            <span><del>₹ 50</del> FREE </span>
                         </div>
                         <div className="d-flex justify-content-between mt-3 fw-bold">
                             <span>Grand Total</span>
-                            <span>₹ {totalAmount + charge - discount}</span>
+                            <span>₹ {TotalAmount + charge - discount}</span>
                         </div>
                         <p className="mt-3">Coupons are only applicable on the Blinkit app</p>
                     </div>
@@ -79,7 +87,7 @@ export default function Cart(props) {
                 <div className=" btn form-control fs-5 position-static bg-success d-flex justify-content-between text-light" onClick={props.handleShow}>
                     <div className="price-item">
                         <span>{cart.length} item</span>
-                        <span> . ₹{totalAmount}</span>
+                        <span> . ₹{TotalAmount}</span>
                     </div>
                     <div className="d-flex">
                         <span>Proceed </span>

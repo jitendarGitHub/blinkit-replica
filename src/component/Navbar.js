@@ -35,6 +35,7 @@ export default function Navbar(item) {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
     }, [cart]);
 
+    const TotalAmount = cart.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
 
     const [LoginInput, setLoginInput] = useState(true)
     function LoginBtnFun() {
@@ -119,7 +120,7 @@ export default function Navbar(item) {
                             />
                             <div className="container ">
                                 <span className="text-white w-1">{cart.length} item</span>
-                                <p className="text-white mx-1 w-10  w-100">₹ {totalAmount}</p>
+                                <p className="text-white mx-1 w-10  w-100">₹ {TotalAmount}</p>
                             </div>
                         </div>
                     </div>
@@ -144,7 +145,10 @@ export default function Navbar(item) {
                 </div>
                 <Modal.Body>
                     {
-                        LoginInput ? (<Login loginbtn={LoginBtnFun} />) : (<OtpPage change={ModalShowFun} premodalstate={LoginModal} close={ModalCloseFun} />)
+                        LoginInput ?
+                            (<Login loginbtn={LoginBtnFun} />)
+                            :
+                            (<OtpPage change={ModalShowFun} premodalstate={LoginModal} close={ModalCloseFun} />)
                     }
                 </Modal.Body>
             </Modal>

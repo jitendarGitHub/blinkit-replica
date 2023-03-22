@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { add, remove, adds, removes } from "../reducer/cartSlice"
-import Add from "./AddBtn";
+import { add, remove, removes, incrementItem, decrementItem } from "../reducer/cartSlice"
 
 const Product = ({ item }) => {
     const cart = useSelector((state) => state.cart)
@@ -12,13 +11,8 @@ const Product = ({ item }) => {
     const addToCart = () => {
         dispatch(add(item));
     }
-
-    const removeFromCart = () => {
-        dispatch(remove(item.id));
-    };
-
     return (
-        <div className="group hover:scale-10 ease-in flex flex-col border-2 border-green-10 gap-3  h-[320px]  mt-2 ml-5  rounded-xl  items-center">
+        <div className="group hover:scale-10 ease-in flex flex-col border-2 border-green-10 gap-3  h-[330px]  mt-2 ml-5  rounded-xl  items-center">
             <div className="text-start bg-success ">
                 <span
                     className="bg-primary text-light  rounded-1 offer"
@@ -51,25 +45,29 @@ const Product = ({ item }) => {
                             (<span
                                 className="text-danger disable"
                                 onClick={() => navigate("/product")}>
-                                Out of Stock
+                                <del className="fs-6">Out of Stock</del>
                             </span>) :
                             (cart.some((p) => p.id === item.id) ?
                                 (<div className="btns">
                                     <button
                                         className='btn btn-success'
-                                        onClick={() => { dispatch(add(1)) }}>
+                                        onClick={() => { dispatch(incrementItem(item.id)) }}>
                                         +
                                     </button>
-                                    <span className="mx-2">{cart.length}</span>
+                                    <span className="mx-2">{item.quantity}</span>
+                                    {/* {
+                                        cart.map((item) => <span>{item.quantity}</span>)
+                                    } */}
                                     <button
                                         className='btn btn-success'
-                                        onClick={() => { dispatch(removes(-1)) }}>
+                                        onClick={() => { dispatch(decrementItem(item.id)) }}>
                                         -
                                     </button>
                                 </div>
                                 ) : (<button className="btn btn-success" onClick={addToCart} >Add to cart</button>
                                 )
-                            )}
+                            )
+                        }
                     </div>
                 </div>
             </div>

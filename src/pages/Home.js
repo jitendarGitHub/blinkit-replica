@@ -26,7 +26,8 @@ const Home = () => {
                     )
                 })}
             </div>
-            <RollinkPaper />
+            {/* <RollinkPaper /> */}
+
 
         </>
     );

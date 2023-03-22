@@ -18,9 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='search-item' element={<SearchItem />} />
-          <Route element={<Cart />} />
           <Route path='/product' element={<PerticularProduct />} />
-          <Route path='/category/' element={<CategoryNavbar />} />
           <Route element={<CategoryNavbar />} >
             <Route index path='/fruits' element={<CategoryItem />} />
             <Route exact path='/breakfast' element={<CategoryItem2 />} />

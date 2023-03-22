@@ -24,7 +24,7 @@ export default function CategoryItem2() {
                         </ListGroup>
                     ))}
                 </div>
-                <div className="col-9 category-scroll">
+                <div className="col-9 category-scroll mt-2">
                     <div className="d-flex" style={{ justifyContent: "space-between" }}>
                         <h4 className="fw-bold mt-3 mx-4">Buy Fresh Milk Products Online</h4>
 

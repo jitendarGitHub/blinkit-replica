@@ -23,7 +23,7 @@ export default function CategoryItem() {
                         </ListGroup>
                     ))}
                 </div>
-                <div className="col-9 category-scroll">
+                <div className="col-9 category-scroll mt-2">
                     <div className="d-flex" style={{ justifyContent: "space-between" }}>
                         <h4 className="fw-bold mt-3 mx-4">Buy Fresh Fruits & A  Online</h4>
                         <Dropdown style={{ fontSize: "11px" }}>

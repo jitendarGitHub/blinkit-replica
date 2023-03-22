@@ -16,7 +16,7 @@ const AddBtn = (item) => {
                 <div className="btns">
                     <button
                         className='btn btn-success h-9 w-10'
-                        onClick={() => { dispatch(adds(1)) }}>
+                        onClick={() => { dispatch(add(1)) }}>
                         +
                     </button>
                     <span className="mx-2" >{cart.length}</span>
