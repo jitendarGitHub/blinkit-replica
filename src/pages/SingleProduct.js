@@ -31,6 +31,7 @@ export default function PerticularProduct(item) {
         }
     ];
 
+    const [state, setState] = useState(0)
     const [sliderdata, setsliderdata] = useState(imgs[0]);
     const cart = useSelector((state) => state.cart)
     const dispatch = useDispatch()
@@ -169,7 +170,7 @@ export default function PerticularProduct(item) {
                                             </button>
                                         )
                                     } */}
-                                    {item.quantity == 0 ? (
+                                    {state == 0 ? (
                                         <button
                                             className="btn btn-success"
                                             onClick={() => dispatch(incrementItem(item.id))} >

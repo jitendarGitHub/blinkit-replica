@@ -102,6 +102,7 @@ export default function Navbar(item) {
                             <input
                                 className="nosubmit form-control bh me-1"
                                 type="search"
+                                id="searchInput"
                                 placeholder="Search..."
                                 onClick={() => navigate("search-item")}
                             />
@@ -113,15 +114,16 @@ export default function Navbar(item) {
                         </Button>
                         <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
                             <img
-                                className="  colmnss w-6 h-6"
+                                className="colmnss w-6 h-6"
                                 src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg"
                                 alt="cart"
                                 onClick={CartShow}
                             />
-                            <div className="container ">
-                                <span className="text-white w-1">{cart.length} item</span>
-                                <p className="text-white mx-1 w-10  w-100">₹ {TotalAmount}</p>
-                            </div>
+                            {
+                                cart.length == 0 ? (<span className="align-self-center fs-6 text-light fw-bold mr-5">My Cart</span>) : (<div className="container ">
+                                    <span className="text-white w-1">{cart.length} item</span>
+                                    <p className="text-white mx-1 w-10  w-100">₹ {TotalAmount}</p>
+                                </div>)}
                         </div>
                     </div>
                 </div>

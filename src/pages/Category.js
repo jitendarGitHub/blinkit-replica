@@ -10,7 +10,7 @@ export default function Category(item) {
     const navigate = useNavigate()
     return (
         <>
-            <div className="grid  sm:grid-cols-5 md:grid-cols-8 space-x-5 space-y-10 lg:grid-cols-10 max-w-7xl mx-auto " >
+            <div className="container grid sm:grid-cols-5 md:grid-cols-6  lg:grid-cols-10 max-w-7xl mx-auto " >
                 {MockCategory.map((data) => {
                     return (
                         <>

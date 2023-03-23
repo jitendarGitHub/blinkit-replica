@@ -7,7 +7,13 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         add(state, action) {
-            state.push(action.payload)
+            const newItemId = action.payload.id;
+            const existingItem = state.find((item) => item.id === newItemId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                state.push(action.payload);
+            }
         },
         remove(state, action) {
             return state.filter((item) => item.id !== action.payload)
@@ -22,6 +28,7 @@ const cartSlice = createSlice({
                 }
                 return console.log("item", item.quantity);
             });
+
         },
         decrementItem(state, action) {
             state.map(item => {

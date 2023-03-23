@@ -10,6 +10,7 @@ import CategoryNavbar from './pages/CategoryNavbar';
 import CategoryItem2 from './pages/CategoryItem2';
 import { CarouselItem } from 'react-bootstrap';
 import SearchItem from './pages/SearchItem';
+import Offer from './mockup/MockOffer';
 function App() {
   return (
     <>

@@ -8,7 +8,7 @@ const Offers = () => {
         <div className="container-fluid mt-3 d-flex gap-3">
             {Offer.map((item) => (
                 <div className="row">
-                    <img src={item.image} alt="" onClick={() => navigate("/category")} />
+                    <img src={item.image} alt="" />
                 </div>
             ))}
         </div>
