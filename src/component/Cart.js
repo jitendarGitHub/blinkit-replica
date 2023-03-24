@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrementItem, incrementItem } from "../reducer/cartSlice";
+import { decrementItem, incrementItem, remove } from "../reducer/cartSlice";
 
 export default function Cart(props) {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
-    const [charge, setcharge] = useState(2)
 
+    const [charge, setcharge] = useState(2)
     const cartQuantity = cart.length;
     const TotalAmount = cart.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
     const discount = TotalAmount / 100 * 15
@@ -33,9 +33,10 @@ export default function Cart(props) {
                                     <div className="">
                                         {item.quantity == 0 ? (
                                             <button
-                                                className="btn btn-success"
-                                                onClick={() => dispatch(incrementItem(item.id))} >
-                                                Add to cart
+                                                className="btn btn-danger"
+                                                onClick={() => dispatch(remove(item.id))} >
+                                                Remove
+                                                {console.log("item.id-----", item.id)}
                                             </button>
                                         ) : (
                                             <>

@@ -11,6 +11,8 @@ import CategoryItem2 from './pages/CategoryItem2';
 import { CarouselItem } from 'react-bootstrap';
 import SearchItem from './pages/SearchItem';
 import Offer from './mockup/MockOffer';
+import RollinkPaper from './component/ProductRollingPaper';
+import Product from './component/Product';
 function App() {
   return (
     <>

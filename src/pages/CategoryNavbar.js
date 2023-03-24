@@ -9,7 +9,7 @@ export default function CategoryNavbar() {
     const navigate = useNavigate()
     return (
         <>
-            <Navbar bg="light" expand="lg" className="text-center justify-content-center" style={{ boxShadow: "0px 2px 3px 1px rgba(0,0,0,0.15)", }}>
+            <Navbar bg="light" expand="lg" className=" " style={{ boxShadow: "0px 2px 3px 1px rgba(0,0,0,0.15)", }}>
                 <div className=" w-90 " >
                     <Container  >
                         <Navbar.Toggle />

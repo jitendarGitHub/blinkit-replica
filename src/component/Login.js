@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import PhoneInput from 'react-phone-number-input'
+// import PhoneInput from 'react-phone-number-input'
 
 export default function Login(props) {
     const { loginbtn } = props
@@ -28,8 +28,8 @@ export default function Login(props) {
                             +91
                         </span>
                         <input
+                            autoComplete='on'
                             type="number"
-                            maxLength={10}
                             className="form-control"
                             id="InputNumber"
                             onChange={Onchange}

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { add, remove, removes, incrementItem, decrementItem } from "../reducer/cartSlice"
+import { add, incrementItem, decrementItem } from "../reducer/cartSlice"
 
 const Product = ({ item }) => {
     const cart = useSelector((state) => state.cart)

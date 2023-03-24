@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import { useState } from "react";
-import { useEffect } from "react";
 import proceed from "../asset/greter.png"
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Login from "./Login";
@@ -30,14 +29,10 @@ export default function Navbar(item) {
     const Show = () => setState(true);
     const Close = () => setState(false);
 
-    const [totalAmount, setTotalAmount] = useState(0);
-    useEffect(() => {
-        setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
-    }, [cart]);
 
-    const TotalAmount = cart.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
 
     const [LoginInput, setLoginInput] = useState(true)
+    const [BackImg, setBackImg] = useState(false)
     function LoginBtnFun() {
         setLoginInput(false)
         setBackImg(true)
@@ -53,16 +48,14 @@ export default function Navbar(item) {
         setLocation(InputLocation)
     }
 
-    const [BackImg, setBackImg] = useState(false)
-
-
+    const TotalAmount = cart.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
 
 
     return (
         <>
-            <nav className="navbar bg-body-tertiary sticky-top " >
+            <nav className="navbar bg-body-tertiary sticky-top">
                 <div className="container-fluid">
-                    <span className="fw-bolder fs-1 text-warning" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+                    <span className="fw-bolder fs-1 text-warning " onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                         blink
                         <span className="text-success">
                             it
@@ -86,7 +79,7 @@ export default function Navbar(item) {
                                     Detect my Location
                                 </button>
                                 <span className="mt-2 text-dark " >--</span>
-                                <div className=" locations py-2" separator={<>fgsdhjsdgfh</>}>OR</div>
+                                <div className=" locations py-2" separator={<></>}>OR</div>
                                 <span className="mt-2 text-dark">--</span>
                                 <input
                                     type="text"
@@ -100,7 +93,8 @@ export default function Navbar(item) {
                     <div className="col-sm-8 d-flex">
                         <Form className="nosubmit h-[40px] form-control bh">
                             <input
-                                className="nosubmit form-control bh me-1"
+                                maxLength={10}
+                                className="nosubmit form-control me-1"
                                 type="search"
                                 id="searchInput"
                                 placeholder="Search..."
@@ -112,7 +106,7 @@ export default function Navbar(item) {
                             onClick={ModalShowFun}>
                             Login
                         </Button>
-                        <div className="buttons d-flex bg-success rounded-3  justify-content-between " style={{ width: "170px" }}>
+                        <div className="buttons d-flex bg-success rounded-3 " style={{ width: "180px" }}>
                             <img
                                 className="colmnss w-6 h-6"
                                 src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg"
@@ -120,11 +114,13 @@ export default function Navbar(item) {
                                 onClick={CartShow}
                             />
                             {
-                                cart.length == 0 ? (<span className="align-self-center fs-6 text-light fw-bold mr-5">My Cart</span>) : (<div className="container ">
-                                    <span className="text-white w-1">{cart.length} item</span>
+                                cart.length == 0 ? (<span className="align-self-center fs-6 text-light fw-bold mx-2 ">MyCart</span>) : (<div className="container ">
+                                    <span className="text-white w-100">{cart.length} item</span>
                                     <p className="text-white mx-1 w-10  w-100">₹ {TotalAmount}</p>
                                 </div>)}
                         </div>
+
+
                     </div>
                 </div>
             </nav>
